@@ -1,0 +1,31 @@
+---
+const { header, text, url = "#", bgImg = "" } = Astro.props;
+import Button from "./Button.astro";
+---
+
+<article
+  class="relative bg-cover bg-center h-[500px] w-[300px] overflow-hidden  group"
+  style={`background-image: url(${bgImg});`}
+>
+  <div class="bg-lavender-600 bg-opacity-90 p-padding-ml flex flex-col justify-between h-full p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+    
+    <!-- Container for header and text -->
+    <div class=" flex flex-col gap-padding-xs">
+      <h1 class="text-center text-isabelline underline font-headline text-h1-card-d">
+        {header.split('\n').map((line) => (
+          <>
+            {line} <br />
+          </>
+        ))}
+      </h1>
+      <p class="text-isabelline font-body text-body-m-s">{text}</p>
+    </div>
+
+    <!-- Button container -->
+    <div class="flex flex-col items-center">
+      <Button size="card" type="primary" class="mx-auto">
+        <a href={url}>BESØG</a>
+      </Button>
+    </div>
+  </div>
+</article>

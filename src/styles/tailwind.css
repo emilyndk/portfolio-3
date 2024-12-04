@@ -7,3 +7,47 @@
         @apply text-body;
     } */
 }
+
+html {
+    scroll-behavior: smooth;
+  }
+  #banner-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+  }
+  
+  #banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: max-content;
+  }
+  
+  
+  .animate-scroll {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    animation: scroll 15s linear infinite;
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Apply to all elements for text selection */
+::selection {
+    background-color: #e7e0eb; /* Purple background */
+    /* White text color */
+  }
+  
+  

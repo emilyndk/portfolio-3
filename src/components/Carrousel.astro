@@ -1,0 +1,70 @@
+---
+import Card from "./Card.astro"
+
+---
+
+
+    
+<div class="relative">
+    <!-- Karussel-containeren med kortene -->
+    <div class="flex flex-row items-start h-[550px] gap-8 overflow-x-auto scroll-snap-type-x mandatory scroll-smooth w-full">
+      <!-- Card 1 -->
+      <div class="m-4 w-[400px] h-[250px] transition-all ease-in-out hover:scale-105 scroll-snap-align-center">
+        <a href="https://www.hojskolendk.dk/hoejskoleophold/caribien-hawaii-mexico/" target="_blank">
+          <Card 
+            header={`CARIBIEN\nHAWAII\nMEXICO`} 
+            text="NORDAMERIKA & MELLEMAMERIKA"
+            bgImg="/img/hojskolendk.webp"
+            url="" 
+          />
+
+          <Card 
+          header={`CARIBIEN\nHAWAII\nMEXICO`} 
+          text="NORDAMERIKA & MELLEMAMERIKA"
+          bgImg="/img/hojskolendk.webp"
+          url="" 
+        />
+
+
+        <Card 
+        header={`CARIBIEN\nHAWAII\nMEXICO`} 
+        text="NORDAMERIKA & MELLEMAMERIKA"
+        bgImg="/img/hojskolendk.webp"
+        url="" 
+      />
+
+      <Card 
+      header={`CARIBIEN\nHAWAII\nMEXICO`} 
+      text="NORDAMERIKA & MELLEMAMERIKA"
+      bgImg="/img/hojskolendk.webp"
+      url="" 
+    />
+        </a>
+      </div>
+  
+      <!-- Other Cards here -->
+  
+    </div>
+  
+    <!-- Pilene til navigation -->
+  </div>
+  
+  <script>
+    // Optional: If you want custom navigation, use this to adjust the scroll position
+    const carousel = document.querySelector(".flex");
+    let index = 0;
+    const totalItems = carousel.children.length;
+  
+    function updateCarousel() {
+      // Update scroll position programmatically
+      carousel.scrollLeft = index * 400; // Adjust scroll by the width of each card
+    }
+  
+    // Example: Using buttons to change the index
+    document.querySelector('.next-button').addEventListener('click', () => {
+      index = (index + 1) % totalItems; // Loop back to the start
+      updateCarousel();
+    });
+  </script>
+  
+  
