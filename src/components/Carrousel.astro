@@ -4,7 +4,10 @@ import Card from "./Card.astro"
 
 <div class="relative overflow-hidden w-full">
   <!-- Carousel container for horizontal scrolling -->
-  <div id="carousel" class="flex flex-row gap-8 overflow-x-auto scroll-smooth snap-x snap-center py-8 px-4">
+  <div id="carousel" 
+  class="flex flex-row overflow-x-auto scroll-smooth snap-x snap-center py-8 px-[16px] sm:px-[40px]"
+>
+
     <!-- Cards -->
     <div class="snap-center shrink-0 w-[400px]">
       <a href="https://hojskolendk.netlify.app/" target="_blank">
@@ -126,51 +129,55 @@ med verden`}
 </div>
 
 <script>
-  const carousel = document.querySelector("#carousel");
-  const nextButton = document.querySelector("#next");
-  const prevButton = document.querySelector("#prev");
+ const carousel = document.querySelector("#carousel");
+const nextButton = document.querySelector("#next");
+const prevButton = document.querySelector("#prev");
 
-  const cardWidth = 400 + 32; // 400px width + 32px gap
+function updateCardWidth() {
+  // Recalculate card width including gap based on viewport
+  return document.querySelector(".snap-center").clientWidth + 16; // Gap 16px (adjust based on padding)
+}
 
-  function scrollNext() {
-    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-    
-    // Scroll to the next card, and loop back to the beginning if at the end
-    if (carousel.scrollLeft >= maxScroll) {
-      carousel.scrollTo({ left: 0, behavior: 'smooth' });
-    } else {
-      carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
-    }
+function scrollNext() {
+  const cardWidth = updateCardWidth();
+  const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+  
+  if (carousel.scrollLeft >= maxScroll) {
+    carousel.scrollTo({ left: 0, behavior: 'smooth' });
+  } else {
+    carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
   }
+}
 
-  function scrollPrev() {
-    // Scroll to the previous card, and loop to the end if at the start
-    if (carousel.scrollLeft <= 0) {
-      carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' });
-    } else {
-      carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-    }
+function scrollPrev() {
+  const cardWidth = updateCardWidth();
+  
+  if (carousel.scrollLeft <= 0) {
+    carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' });
+  } else {
+    carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
   }
+}
 
-  nextButton.addEventListener("click", scrollNext);
-  prevButton.addEventListener("click", scrollPrev);
-
-  // Optional: Keyboard navigation for accessibility
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") nextButton.click();
-    if (e.key === "ArrowLeft") prevButton.click();
-  });
+nextButton.addEventListener("click", scrollNext);
+prevButton.addEventListener("click", scrollPrev);
 
   // Auto-scroll every 5 seconds if the button is not disabled
  
 </script>
 
 <style>
-  #carousel {
-    scrollbar-width: none; /* Firefox */
-  }
+#carousel {
+  scrollbar-width: none; /* Firefox */
+}
 
-  #carousel::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, and Edge */
-  }
+#carousel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+/* Centering fix */
+.snap-center {
+  scroll-snap-align: center;
+}
+
 </style>
