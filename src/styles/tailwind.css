@@ -45,9 +45,34 @@ html {
   }
 
   /* Apply to all elements for text selection */
-::selection {
-    background-color: #e7e0eb; /* Purple background */
-    /* White text color */
+  ::selection {
+    background: #8770da;
+    color: white;
   }
+  
+
+  /* WebKit-based browsers */
+  ::-webkit-scrollbar {
+    width: 12px; /* Adjust width */
+  }
+  
+  ::-webkit-scrollbar-track {
+   background:#E2D9FF; /* Track color */
+    border-radius: 10px; /* Rounded corners */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #755CCE; /* Thumb color */
+    border-radius: 10px;
+    transition: background-color 1s ease-in-out; /* Smooth, rounded thumb */
+    /* Smooth color transition */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #8770da;
+     /* Brighter on hover */
+  }
+  
+
   
   
